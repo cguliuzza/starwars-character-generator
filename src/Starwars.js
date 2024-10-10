@@ -55,9 +55,9 @@ class Starwars extends React.Component {
   }
 
   render() {
-    // const movies = this.state.films.map((url, i) => {
-    //   return <FilmItemRow key={i} url={url} />;
-    // });
+    const affiliationsList = this.state.affiliations.map((affiliation, i) => {
+      return <AffiliationsItemRow key={i} affiliation={affiliation} />;
+    });
 
     return (
       <>
@@ -68,7 +68,8 @@ class Starwars extends React.Component {
             <p>Species: {this.state.species}</p>
             <p>Height: {this.state.height}cm</p>
             <p>Homeworld: {this.state.homeworld}</p>
-            {/* <ul>{movies}</ul> */}
+            <p>Affiliations</p>
+            <ul>{affiliationsList}</ul>
           </div>
         )}
         <button
