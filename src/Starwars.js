@@ -13,14 +13,19 @@ class Starwars extends React.Component {
   }
   
   getNewCharacter() {
-    console.log("getNewCharacter");
-    this.setState({
-      loadedCharacter: true,
-      name: "Luke",
-      height: 172,
-      homeworld: "Tattooine",
-      films: ["1", "2", "3"],
-    });
+    const url = 'https://swapi.dev/api/people/1'
+    fetch(url)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data)
+        this.setState({
+          loadedCharacter: true,
+          name: data.name,
+          height: data.height,
+          homeworld: data.homeworld,
+          films: data.films,
+        });
+    })
   }
 
   render() {
