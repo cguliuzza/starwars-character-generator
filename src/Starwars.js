@@ -1,5 +1,15 @@
 import React from "react";
 
+class FilmItemRow extends React.Component {
+  render() {
+    return (
+      <li>
+        <a href={this.props.url}>TEXT</a>
+      </li>
+    );
+  }
+}
+
 class Starwars extends React.Component {
   constructor() {
     super();
@@ -30,6 +40,10 @@ class Starwars extends React.Component {
   }
 
   render() {
+    const movies = this.state.films.map((url, i) => {
+      return <FilmItemRow key={i} url={url} />;
+    });
+
     return (
       <>
         {this.state.loadedCharacter && (
@@ -39,11 +53,7 @@ class Starwars extends React.Component {
             <p>
               <a href={this.state.homeworld}>Homeworld</a>
             </p>
-            <ul>
-              {this.state.films.map((film) => {
-                return <li>{film}</li>;
-              })}
-            </ul>
+            <ul>{movies}</ul>
           </div>
         )}
         <button
