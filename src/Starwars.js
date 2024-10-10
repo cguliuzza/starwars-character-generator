@@ -1,6 +1,15 @@
 import React from "react";
 
 class Starwars extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            name: null,
+            height: null,
+            homeworld: null,
+            films: []
+        }
+    }
     getNewCharacter() {
         console.log("getNewCharacter")
     }
