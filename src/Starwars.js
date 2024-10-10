@@ -36,7 +36,7 @@ class Starwars extends React.Component {
           <div>
             <h1>{this.state.name}</h1>
             <p>{this.state.height}cm</p>
-            <p>Homeworld: {this.state.homeworld}</p>
+            <p><a href={this.state.homeworld}>Homeworld</a></p>
             <ul>
               <li>Films: {this.state.films}</li>
             </ul>
