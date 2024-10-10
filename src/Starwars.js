@@ -34,7 +34,6 @@ class Starwars extends React.Component {
 
   getNewCharacter() {
     const randomNumber = Math.round(Math.random() * 88);
-    // const url = `https://swapi.dev/api/people/${randomNumber}`;
     const url = `https://akabab.github.io/starwars-api/api/id/${randomNumber}.json`;
     console.log(url);
     fetch(url)
@@ -64,7 +63,7 @@ class Starwars extends React.Component {
       <>
         {this.state.loadedCharacter && (
           <div>
-            <image src={this.state.imgUrl} />
+            <img src={this.state.image} />
             <h1>{this.state.name}</h1>
             <p>Species: {this.state.species}</p>
             <p>Height: {this.state.height}cm</p>
