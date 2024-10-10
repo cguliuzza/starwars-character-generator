@@ -4,7 +4,7 @@ class FilmItemRow extends React.Component {
   render() {
     return (
       <li>
-        <a href={this.props.url}>TEXT</a>
+        <a href={this.props.url}>{this.props.url}</a>
       </li>
     );
   }
