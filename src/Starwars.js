@@ -63,7 +63,7 @@ class Starwars extends React.Component {
       <>
         {this.state.loadedCharacter && (
           <div>
-            <img src={this.state.image} />
+            <img src={this.state.image} alt={`Image of ${this.state.name} from Starwars`} />
             <h1>{this.state.name}</h1>
             <p>Species: {this.state.species}</p>
             <p>Height: {this.state.height}cm</p>
