@@ -1,12 +1,18 @@
 import React from "react";
 
-class FilmItemRow extends React.Component {
+class AffiliationsItemRow extends React.Component {
   render() {
-    return (
-      <li>
-        <a href={this.props.url}>{this.props.url}</a>
-      </li>
-    );
+    return <li>{this.props.affiliation}</li>;
+  }
+}
+class MastersItemRow extends React.Component {
+  render() {
+    return <li>{this.props.master}</li>;
+  }
+}
+class ApprenticesItemRow extends React.Component {
+  render() {
+    return <li>{this.props.apprentice}</li>;
   }
 }
 
@@ -16,15 +22,21 @@ class Starwars extends React.Component {
     this.state = {
       loadedCharacter: false,
       name: null,
+      image: null,
       height: null,
       homeworld: null,
-      films: [],
+      species: null,
+      affiliations: [],
+      masters: [],
+      apprentices: [],
     };
   }
 
   getNewCharacter() {
-    const randomNumber = Math.round(Math.random() * 82);
-    const url = `https://swapi.dev/api/people/${randomNumber}`;
+    const randomNumber = Math.round(Math.random() * 88);
+    // const url = `https://swapi.dev/api/people/${randomNumber}`;
+    const url = `https://akabab.github.io/starwars-api/api/id/${randomNumber}.json`;
+    console.log(url);
     fetch(url)
       .then((resp) => resp.json())
       .then((data) => {
@@ -32,28 +44,32 @@ class Starwars extends React.Component {
         this.setState({
           loadedCharacter: true,
           name: data.name,
+          image: data.image,
           height: data.height,
           homeworld: data.homeworld,
-          films: data.films,
+          species: data.species,
+          affiliations: data.affiliations,
+          masters: data.masters,
+          apprentices: data.apprentices,
         });
       });
   }
 
   render() {
-    const movies = this.state.films.map((url, i) => {
-      return <FilmItemRow key={i} url={url} />;
-    });
+    // const movies = this.state.films.map((url, i) => {
+    //   return <FilmItemRow key={i} url={url} />;
+    // });
 
     return (
       <>
         {this.state.loadedCharacter && (
           <div>
+            <image src={this.state.imgUrl} />
             <h1>{this.state.name}</h1>
-            <p>{this.state.height}cm</p>
-            <p>
-              <a href={this.state.homeworld}>Homeworld</a>
-            </p>
-            <ul>{movies}</ul>
+            <p>Species: {this.state.species}</p>
+            <p>Height: {this.state.height}cm</p>
+            <p>Homeworld: {this.state.homeworld}</p>
+            {/* <ul>{movies}</ul> */}
           </div>
         )}
         <button
