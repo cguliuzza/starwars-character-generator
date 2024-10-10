@@ -11,13 +11,14 @@ class Starwars extends React.Component {
       films: [],
     };
   }
-  
+
   getNewCharacter() {
-    const url = 'https://swapi.dev/api/people/1'
+    const randomNumber = Math.round(Math.random() * 82);
+    const url = `https://swapi.dev/api/people/${randomNumber}`;
     fetch(url)
-    .then(resp => resp.json())
-    .then(data => {
-        console.log(data)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
         this.setState({
           loadedCharacter: true,
           name: data.name,
@@ -25,7 +26,7 @@ class Starwars extends React.Component {
           homeworld: data.homeworld,
           films: data.films,
         });
-    })
+      });
   }
 
   render() {
