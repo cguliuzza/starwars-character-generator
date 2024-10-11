@@ -25,6 +25,8 @@ class Starwars extends React.Component {
       image: null,
       height: null,
       homeworld: null,
+      born: null,
+      died: null,
       species: null,
       affiliations: [],
       masters: [],
@@ -46,6 +48,8 @@ class Starwars extends React.Component {
           image: data.image,
           height: data.height,
           homeworld: data.homeworld,
+          born: data.born,
+          died: data.died,
           species: data.species,
           affiliations: Array.isArray(data.affiliations)
             ? data.affiliations
@@ -79,6 +83,8 @@ class Starwars extends React.Component {
             <p>Species: {this.state.species}</p>
             <p>Height: {this.state.height}cm</p>
             <p>Homeworld: {this.state.homeworld}</p>
+            {this.state.born != null && <p>Born: {this.state.born}</p>}
+            {this.state.died != null && <p>Died: {this.state.died}</p>}
             <p>Affiliations</p>
             <ul>{affiliationsList}</ul>
             {this.state.masters.length > 0 && (
