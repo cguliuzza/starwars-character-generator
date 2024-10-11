@@ -47,9 +47,11 @@ class Starwars extends React.Component {
           height: data.height,
           homeworld: data.homeworld,
           species: data.species,
-          affiliations: data.affiliations,
-          masters: data.masters,
-          apprentices: data.apprentices,
+          affiliations: Array.isArray(data.affiliations)
+            ? data.affiliations
+            : [],
+          masters: Array.isArray(data.masters) ? data.masters : [],
+          apprentices: Array.isArray(data.apprentices) ? data.apprentices : [],
         });
       });
   }
@@ -58,18 +60,39 @@ class Starwars extends React.Component {
     const affiliationsList = this.state.affiliations.map((affiliation, i) => {
       return <AffiliationsItemRow key={i} affiliation={affiliation} />;
     });
+    const mastersList = this.state.masters.map((master, i) => {
+      return <MastersItemRow key={i} master={master} />;
+    });
+    const apprenticesList = this.state.apprentices.map((apprentice, i) => {
+      return <ApprenticesItemRow key={i} apprentice={apprentice} />;
+    });
 
     return (
       <>
         {this.state.loadedCharacter && (
           <div>
-            <img src={this.state.image} alt={`Image of ${this.state.name} from Starwars`} />
+            <img
+              src={this.state.image}
+              alt={`Image of ${this.state.name} from Starwars`}
+            />
             <h1>{this.state.name}</h1>
             <p>Species: {this.state.species}</p>
             <p>Height: {this.state.height}cm</p>
             <p>Homeworld: {this.state.homeworld}</p>
             <p>Affiliations</p>
             <ul>{affiliationsList}</ul>
+            {this.state.masters.length > 0 && (
+              <>
+                <p>Masters</p>
+                <ul>{mastersList}</ul>
+              </>
+            )}
+            {this.state.apprentices.length > 0 && (
+              <>
+                <p>Apprentices</p>
+                <ul>{apprenticesList}</ul>
+              </>
+            )}
           </div>
         )}
         <button
