@@ -4,9 +4,7 @@ import Starwars from "./Starwars";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Starwars />
-      </header>
+      <Starwars />
     </div>
   );
 }

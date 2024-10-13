@@ -72,12 +72,19 @@ class Starwars extends React.Component {
     });
 
     return (
-      <>
+      <div className="card">
+        <button
+          type="button"
+          onClick={() => this.getNewCharacter()}
+          className="btn"
+        >
+          Generate New Character
+        </button>
         {this.state.loadedCharacter && (
-          <div>
+          <div className="container">
             <img
               src={this.state.image}
-              alt={`Image of ${this.state.name} from Starwars`}
+              alt={`${this.state.name} from Starwars`}
             />
             <h1>{this.state.name}</h1>
             <p>Species: {this.state.species}</p>
@@ -101,14 +108,7 @@ class Starwars extends React.Component {
             )}
           </div>
         )}
-        <button
-          type="button"
-          onClick={() => this.getNewCharacter()}
-          className="btn"
-        >
-          Generate New Character
-        </button>
-      </>
+      </div>
     );
   }
 }
